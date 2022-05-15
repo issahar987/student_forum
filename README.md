@@ -1,7 +1,10 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Work share Due Time:**
+1. Bog:
+2. Mich:
+3. Adr: JWT Authentication --Whenever--
+4. Pit: Data seeds
+5. Amad: Swagger
 
 Things you may want to cover:
 
