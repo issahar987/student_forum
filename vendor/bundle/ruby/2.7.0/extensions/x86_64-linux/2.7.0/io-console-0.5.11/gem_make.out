@@ -1,0 +1,20 @@
+current directory: /home/issahar/dev/student_forum/vendor/bundle/ruby/2.7.0/gems/io-console-0.5.11/ext/io/console
+/home/issahar/.rvm/rubies/ruby-2.7.0/bin/ruby -I /home/issahar/.rvm/rubies/ruby-2.7.0/lib/ruby/2.7.0 -r ./siteconf20220516-2915-1r3d8r2.rb extconf.rb
+checking for termios.h... yes
+checking for cfmakeraw() in termios.h... yes
+checking for sys/ioctl.h... yes
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... no
+checking for rb_scheduler_timeout()... no
+creating Makefile
+
+current directory: /home/issahar/dev/student_forum/vendor/bundle/ruby/2.7.0/gems/io-console-0.5.11/ext/io/console
+make "DESTDIR=" clean
+
+current directory: /home/issahar/dev/student_forum/vendor/bundle/ruby/2.7.0/gems/io-console-0.5.11/ext/io/console
+make "DESTDIR="
+compiling console.c
+linking shared-object io/console.so
+
+current directory: /home/issahar/dev/student_forum/vendor/bundle/ruby/2.7.0/gems/io-console-0.5.11/ext/io/console
+make "DESTDIR=" install
+/usr/bin/install -m 0755 console.so ./.gem.20220516-2915-104vwrl/io
