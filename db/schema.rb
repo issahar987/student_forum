@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_13_101739) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_25_190230) do
   create_table "comments", force: :cascade do |t|
     t.integer "ID_User"
     t.integer "ID_ForumPost"
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_13_101739) do
     t.datetime "updated_at", null: false
   end
 
+
   create_table "users", force: :cascade do |t|
     t.string "nickName"
     t.string "name"
@@ -56,6 +57,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_13_101739) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users_forum_posts", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "forum_post_id"
+    t.index ["forum_post_id"], name: "index_users_forum_posts_on_forum_post_id"
+    t.index ["user_id"], name: "index_users_forum_posts_on_user_id"
   end
 
 end

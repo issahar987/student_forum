@@ -1,5 +1,10 @@
 class RepairOffersController < ApplicationController
-  before_action :set_repair_offer, only: %i[ show edit update destroy ]
+  before_action :set_repair_offer, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
+
+
+  def follow
+    redirect_to @repair_offer
+  end
 
   # GET /repair_offers or /repair_offers.json
   def index
