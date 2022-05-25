@@ -1,7 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @repair_offer %>
+<p><%= @repair_offer.description %></p>
 
+<% if logged_in? %>
+  <%= link_to( "Zgłoś się do naprawy", action: :follow)%>
+<% end %>
+
+<%
+=begin %> start comment
+<hr>
+<h1>Zgłoszeni pracownicy</h1>
+<ul>
+<% @repair_offer.user.each do |user| %>
+  <li><%= link_to user.nickName, user %></li>
+<% end %>
+</ul>
+<%
+=end %>
 <div>
   <%= link_to "Edit this repair offer", edit_repair_offer_path(@repair_offer) %> |
   <%= link_to "Back to repair offers", repair_offers_path %>

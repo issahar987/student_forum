@@ -4,3 +4,18 @@
 
   Serwis komputerowy przede wszystkim zajmuje się naprawą komputerów, zarówno stacjonarnych jak i przenośnych, instalowaniem sterowników, konfigurowaniem sprzętu informatycznego a także konfiguracją sieci komputerowych. Często także zdarza się, że oferuje podkładki pod myszki dla graczy lub inne drobne akcesoria do kupienia
 </p>
+<ul>
+  <h2>Posty</h2>
+  <% ForumPost.all.each do |forum_post| %>
+    <%= link_to forum_post do %>
+      <li><%= forum_post.title %> </li>
+    <% end %>
+    <% end %>
+
+<h2>Zgłoszenia napaw</h2>
+<% RepairOffer.all.each do |repair_offer| %>
+  <%= link_to repair_offer do %>
+    <li><%= repair_offer.description %> </li>
+  <% end %>
+  <% end %>
+</ul>
