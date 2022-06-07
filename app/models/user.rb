@@ -4,6 +4,10 @@ class User < ApplicationRecord
     has_many :RepairOffer
     has_many :Role
 
+    def follows?(repair_offer)
+        self.RepairOffer.include?(repair_offer)
+    end
+
     has_secure_password
 
     validates :eMail, presence: true, uniqueness: true, length: { in: 3..50 }
@@ -11,3 +15,4 @@ class User < ApplicationRecord
     validates :nickName, presence: true, uniqueness: true, length: { in: 3..50 }
     validates :password, presence: true, length: { minimum: 6 }
 end
+

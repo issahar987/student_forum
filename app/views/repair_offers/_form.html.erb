@@ -1,4 +1,4 @@
-<%= form_with(model: repair_offer) do |form| %>
+<<%= form_for [@repair_offer, @topic] do |form| %>
   <% if repair_offer.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(repair_offer.errors.count, "error") %> prohibited this repair_offer from being saved:</h2>
@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :ID_User, style: "display: block" %>
-    <%= form.number_field :ID_User %>
-  </div>
+<!--  <div>-->
+    <%#= form.label :ID_User, style: "display: block" %>
+    <%#= form.number_field :ID_User %>
+<!--  </div>-->
 
   <div>
     <%= form.label :ID_ForumPost, style: "display: block" %>

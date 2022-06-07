@@ -1,5 +1,5 @@
 class ForumPostsController < ApplicationController
-  before_action :set_forum_post, only: %i[ show edit update destroy ]
+  before_action :set_forum_post, only: %i[:show, :edit, :update, :destroy]
 
   # GET /forum_posts or /forum_posts.json
   def index
@@ -12,7 +12,7 @@ class ForumPostsController < ApplicationController
 
   # GET /forum_posts/new
   def new
-    @forum_post = ForumPost.new
+    @forum_posts = @topic.ForumPost.new
   end
 
   # GET /forum_posts/1/edit
@@ -21,8 +21,9 @@ class ForumPostsController < ApplicationController
 
   # POST /forum_posts or /forum_posts.json
   def create
-    @forum_post = ForumPost.new(forum_post_params)
-
+    # @forum_post = ForumPost.new(forum_post_params)
+    @forum_post = content.find(params[:content])
+    @forum_post.User = current_user
     respond_to do |format|
       if @forum_post.save
         format.html { redirect_to forum_post_url(@forum_post), notice: "Forum post was successfully created." }
@@ -60,7 +61,8 @@ class ForumPostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_forum_post
-      @forum_post = ForumPost.find(params[:id])
+      @forum_posts = ForumPost.find(params[:id])
+      @forum_post = content.find(params[:content])
     end
 
     # Only allow a list of trusted parameters through.

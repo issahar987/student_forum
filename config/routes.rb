@@ -14,5 +14,10 @@ Rails.application.routes.draw do
   resources :comments
   resources :forum_posts
   resources :users
+  resources :repair_offers do
+    resources :topics, only: [:new, :create, :edit, :update, :show, :destroy] do
+      resources :posts, only: [:new, :create, :edit, :update, :show, :destroy]
+    end
+  end
 
 end

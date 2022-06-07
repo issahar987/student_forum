@@ -3,8 +3,65 @@
 <p><%= @repair_offer.description %></p>
 
 <% if logged_in? %>
+  <% unless current_user.follows?(@repair_offer) %>
   <%= link_to( "Zgłoś się do naprawy", action: :follow)%>
+  <% else %>
+    <%= link_to( "Zrezygnuj z naprawy", action: :unfollow) %>
+  <% end %>
 <% end %>
+
+<h1>Lista tematów</h1>
+<% if @repair_offer.topics.length == 0 %>
+  Nie ma żadnego tematu
+<% else %>
+  <% @repair_offer.topics.each do |topic| %>
+    <%= link_to [@repair_offer, topic] do %>
+      <h4><%= topic.title %> by <%= topic.User.name %></h4>
+    <% end %>
+    <% topic.content.each do |post| %>
+      <p>
+        <%= post.description %>
+      </p>
+      <h6>by <%= post.User.name %></h6>
+    <% end %>
+  <% end %>
+<% end %>
+
+<hr>
+
+<% if logged_in? && current_user.follows?(@repair_offer) %>
+  <%= link_to "Dodaj temat", new_repair_offers_topics_path(@repair_offer) %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<h1><%= @topic.title %> by <%= link_to @topic.User.name, @topic.User %></h1>
+<h2><%= link_to @repair_offer.name, @repair_offer %></h2>
+
+<hr>
+<h1>Lista odpowiedzi</h1>
+<% if @topic.content.length == 0 %>
+  Nie ma żadnych odpowiedzi
+<% else %>
+  <ul>
+    <% @topic.content.each do |post| %>
+      <li>
+        <strong><%= post.User.name %> pisze:</strong> <%= post.description %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<hr>
+
+<% if logged_in? && current_user.follows?(@repair_offer) %>
+  <%= link_to "Dodaj odpowiedź", new_repair_offers_topics_path(@repair_offer,@topic) %>
+<% end %>
+
+<hr>
+
+<%= link_to 'Edit', edit_repair_offers_topics_path(@repair_offer, @topic) %> |
+<%= link_to 'Back', @repair_offer %>
 
 <%
 =begin %> start comment
