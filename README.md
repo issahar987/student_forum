@@ -34,5 +34,5 @@ Things you may want to cover:
 6. in case it didn't work you may try *(rvm reset)* which will clear PATH
 
 * ...
-Make the database work :-):
+Make the database work :-) 
 rails db:drop db:create db:migrate db:seed
