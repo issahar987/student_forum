@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_13_101739) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_08_180845) do
   create_table "comments", force: :cascade do |t|
     t.integer "ID_User"
     t.integer "ID_ForumPost"
@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_13_101739) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token"
   end
 
 end

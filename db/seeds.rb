@@ -9,28 +9,32 @@
 users = User.create(
   [
     {
-      eMail: 'Bob.budowniczy@gmail.com',
-      login: 'bobrob',
-      name: 'Bob Budowniczy',
-      nickName: 'Robob',
-      password_digest: 'haslo123',
-      phoneNumber: 123456789
+      nickName: 'test123',
+      name: 'test12345',
+      eMail: 'emailtest@gmail.com',
+      phoneNumber: 123456789,
+      login: 'test',
+      password: 'test123',
+      token: '123456789'
     },
     {
-        eMail: 'Krecik.slepiec@gmail.com',
-        login: 'Kretsep',
-        name: 'Krecik slepiec',
-        nickName: 'kretoszczur',
-        password_digest: 'haslo123',
-        phoneNumber: 987654321
+      nickName: 'kretoszczur',
+      name: 'Krecik slepiec',
+      eMail: 'Krecik.slepiec@gmail.com',
+      phoneNumber: 987654321,
+      login: 'Kretsep',
+      password: 'haslo123',
+      token: '1234567892'
+
     },
     {
-      eMail: 'ahmojezycie@gmail.com',
-      login: 'trudnezycie',
-      name: 'Student Biedak',
       nickName: 'biednystudent',
-      password_digest: 'haslostudenta',
-      phoneNumber: 111222333
+      name: 'Student Biedak',
+      eMail: 'ahmojezycie@gmail.com',
+      phoneNumber: 111222333,
+      login: 'trudnezycie',
+      password: 'haslostudenta',
+      token:'12345'
     }
   ]
 )
@@ -38,7 +42,7 @@ users = User.create(
 roles = Role.create(
     [
         {
-            isEmployee: 1,
+            isEmployee: 0,
             isRepairBuisness: 0,
             isUser: 1,
         },
@@ -106,3 +110,5 @@ repairOffers = RepairOffer.create(
         },
     ]
 )
+
+students.first.forumPosts = forumPosts
