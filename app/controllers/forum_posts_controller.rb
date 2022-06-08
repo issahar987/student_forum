@@ -2,7 +2,7 @@ class ForumPostsController < ApplicationController
   before_action :set_forum_post, only: %i[ show edit update destroy ]
 
   skip_before_action :verify_authenticity_token
-  before_action :require_token, only: [:create]
+  # before_action :require_token, only: [:create]
   swagger_controller :forum_post, 'ForumPosts'
   # GET /forum_posts or /forum_posts.json
   def index
