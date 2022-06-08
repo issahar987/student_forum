@@ -23,6 +23,14 @@ users = User.create(
         nickName: 'kretoszczur',
         password_digest: 'haslo123',
         phoneNumber: 987654321
+    },
+    {
+      eMail: 'ahmojezycie@gmail.com',
+      login: 'trudnezycie',
+      name: 'Student Biedak',
+      nickName: 'biednystudent',
+      password_digest: 'haslostudenta',
+      phoneNumber: 111222333
     }
   ]
 )
