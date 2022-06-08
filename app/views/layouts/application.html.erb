@@ -18,6 +18,7 @@
           <%= link_to "Użytkownicy", users_path, style: "display: block" %>
         <% else %>
           <%= link_to "Zaloguj", login_path %>
+          <%= link_to "Zarejestruj", new_user_path %>
         <% end %>
         <%= yield %>
         </ul>
