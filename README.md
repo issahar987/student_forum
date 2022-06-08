@@ -35,4 +35,5 @@ Things you may want to cover:
 
 * ...
 Make the database work :-) 
+
 rails db:drop db:create db:migrate db:seed
