@@ -4,6 +4,10 @@ class User < ApplicationRecord
     has_many :RepairOffer
     has_many :Role
 
+    def follows?(repair_offer)
+        self.RepairOffer.include?(repair_offer)
+    end
+
     has_secure_password
     has_secure_token
 
@@ -16,3 +20,4 @@ class User < ApplicationRecord
         self.update_columns(token: nil)
     end
 end
+

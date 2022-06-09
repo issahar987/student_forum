@@ -1,6 +1,9 @@
 class ForumPostsController < ApplicationController
   before_action :set_forum_post, only: %i[ show edit update destroy ]
 
+  skip_before_action :verify_authenticity_token
+  # before_action :require_token, only: [:create]
+  swagger_controller :forum_post, 'ForumPosts'
   # GET /forum_posts or /forum_posts.json
   def index
     @forum_posts = ForumPost.all
@@ -20,13 +23,19 @@ class ForumPostsController < ApplicationController
   end
 
   # POST /forum_posts or /forum_posts.json
+  swagger_api :create do
+    summary "Create new forum post"
+    param :header, "Authorization", :string, :required, "Authentication token"
+    param :path, :forum_post_id, :integer, :required, "Forum post id"
+    param :form, "forum_post[title]", :string, :required, "Title of a post"
+  end
   def create
     @forum_post = ForumPost.new(forum_post_params)
 
     respond_to do |format|
       if @forum_post.save
         format.html { redirect_to forum_post_url(@forum_post), notice: "Forum post was successfully created." }
-        format.json { render :show, status: :created, location: @forum_post }
+        format.json { render :show, status: :created }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @forum_post.errors, status: :unprocessable_entity }

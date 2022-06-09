@@ -1,8 +1,15 @@
 class SessionsController < ApplicationController
+    swagger_controller :session, "Authentication"
     skip_before_action :verify_authenticity_token
     def new
   end
 
+
+  swagger_api :create do
+    summary "Gather a token"
+    param :form, "session[login]", :string, :required, "User login"
+    param :form, "session[password]", :string, :required, "User password"
+  end
   def create
     # user = User.find_by(login: params[:session][:login])
     # if user && user.authenticate(params[:session][:password])
@@ -35,7 +42,6 @@ class SessionsController < ApplicationController
     end
   end
 end
-  
   def destroy
     respond_to do |format|
       format.html do

@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root to: 'static#index'
 
 
+  get '/api' => redirect('/swagger/dist/index.html?url=/api-docs.json')
   get    '/feed',    to: 'static#feed'
-  
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
@@ -17,5 +18,10 @@ Rails.application.routes.draw do
   resources :comments
   resources :forum_posts
   resources :users
+  resources :repair_offers do
+    resources :topics, only: [:new, :create, :edit, :update, :show, :destroy] do
+      resources :posts, only: [:new, :create, :edit, :update, :show, :destroy]
+    end
+  end
 
 end
